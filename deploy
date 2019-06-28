@@ -2,6 +2,7 @@
 
 mkdir /srv/webanno
 echo installing Docker
+apt update
 apt install docker -y
 apt install docker.io -y
 echo Port to use:
