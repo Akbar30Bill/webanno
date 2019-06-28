@@ -1,7 +1,6 @@
 #!/bin/bash
 
-if[$whoami -eq 'root']
-then
+if["$USER" -eq 'root'];then
   mkdir /srv/webanno
   echo installing Docker
   apt install docker -y
@@ -10,8 +9,7 @@ then
   read Port
   echo Run Webanno in background?[Y/n]:
   read background
-  if[$background -eq 'y'] || [$background -eq 'Y']
-  then
+  if["$background" -eq 'y'] || ["$background" -eq 'Y'];then
     docker run -d --name webanno -v /srv/webanno:/export -p$Port:$Port webanno/webanno:3.5.7
   else
     docker run -it --name webanno -v /srv/webanno:/export -p$Port:$Port webanno/webanno:3.5.7
